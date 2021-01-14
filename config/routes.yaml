@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+get_container:
+  path: /container
+  controller: App\Controller\ContainerController::getAllContainer
+  methods: GET
