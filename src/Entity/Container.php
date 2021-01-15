@@ -6,6 +6,7 @@ use App\Repository\ContainerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(name="container", indexes={@ORM\Index(name="container_container_model_id_fk", columns={"container_model_id"}), @ORM\Index(name="container_containership_id_fk", columns={"containership_id"})})
  * @ORM\Entity(repositoryClass=ContainerRepository::class)
  */
 class Container
@@ -24,11 +25,19 @@ class Container
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="ContainerModel")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="container_model_id", referencedColumnName="ID")
+     * })
      */
     private $container_model_id;
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Containership")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="containership_id", referencedColumnName="ID")
+     * })
      */
     private $containership_id;
 
@@ -71,5 +80,10 @@ class Container
         $this->containership_id = $containership_id;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->color;
     }
 }

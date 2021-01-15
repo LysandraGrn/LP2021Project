@@ -6,6 +6,7 @@ use App\Repository\ContainerProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(name="container_product", indexes={@ORM\Index(name="container_product_product_id_fk", columns={"product_id"}), @ORM\Index(name="container_product_container_id_fk", columns={"container_id"})})
  * @ORM\Entity(repositoryClass=ContainerProductRepository::class)
  */
 class ContainerProduct
@@ -19,11 +20,20 @@ class ContainerProduct
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Container")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="container_id", referencedColumnName="ID")
+     * })
      */
     private $container_id;
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="ID")
+     * })
+
      */
     private $product_id;
 
