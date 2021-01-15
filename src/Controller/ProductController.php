@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Containership;
 use App\Entity\Product;
-use App\Form\ContainershipFormType;
 use App\Form\ProductFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

@@ -3,11 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Container;
-use App\Entity\Containership;
-use App\Entity\Product;
 use App\Form\ContainerFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
